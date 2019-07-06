@@ -1,0 +1,22 @@
+2. Пояснити що таке Comparator i Comparable. В чому їхня відмінність?
+
+Comparable vs Comparator
+Comparable interface can be used to provide single way of sorting whereas
+Comparator interface is used to provide different ways of sorting.
+For using Comparable, Class needs to implement it whereas for using Comparator
+we don’t need to make any change in the class.
+Comparable interface is in java.lang package whereas Comparator interface
+is present in java.util package.
+We don’t need to make any code changes at client side for using Comparable,
+Arrays.sort() or Collection.sort() methods automatically uses the compareTo() method of the class.
+For Comparator, client needs to provide the Comparator class to use in compare() method.
+
+
+
+3. Чому в PriorityQueue MAX capacity - MAX_INTEGER- 8? І чому initial capacity 11?
+
+1) Since the JDK attempts to be ass generic as possible, and run on any JVM, it takes a precaution
+and will not allow you to create a PriorityQueue which internally uses an array longer than Integer.MAX_VALUE - 8.
+2) 11 is probably a number that was chosen more or less arbitrarily, as a trade off between memory consumption
+(a too large number would consume too much memory for nothing), and CPU consumption (a too low number would need too many resizes of the queue).
+And they probably benchmarked typical use cases to choose this number and the strategy used to resize the queue.
